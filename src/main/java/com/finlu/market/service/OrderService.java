@@ -30,4 +30,5 @@ public interface OrderService {
     List<OrderRecord> getAllOrderRecordByUserId(Long userId);
     boolean changeCartProductCount(Long cartId, Integer count);
     boolean removeOneProductFromCart(Long userId, Long cartId);
+    OrderRecord.OrderRecordItem updateOrderStatus(Long orderId, Integer newStatus);
 }

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//解决跨域问题
-
+/**
+ * 解决跨域问题
+ * 
+ */
 @Slf4j
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)

@@ -167,6 +167,7 @@ public class ProductServiceImpl implements ProductService {
         orderRecordItemEntity.setProductEntity(productEntity);
         orderRecordItemEntity.setItemCount(itemCount);
         orderRecordItemEntity.setOrderRecordEntity(orderRecordEntity);
+        orderRecordItemEntity.setStatus(0);
         orderRecordItemEntity = this.orderRecordItemRepository.save(orderRecordItemEntity);
 
 

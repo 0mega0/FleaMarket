@@ -7,8 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
-//参考： https://blog.csdn.net/weixin_43817709/article/details/100859132
-
+/**
+ * 为文件上传的服务添加一个资源处理器
+ * 参考： https://blog.csdn.net/weixin_43817709/article/details/100859132
+ */
 public class UploadFilePathConfig implements WebMvcConfigurer {
     @Value("${uploadFile.path}")
     private String uploadFilePath;

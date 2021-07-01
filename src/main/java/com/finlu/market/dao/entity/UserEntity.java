@@ -9,9 +9,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-
-//如果不加入Getter和Setter注解，在使用BeanUtils进行属性拷贝的时候回出现问题
-
+/**
+ * 如果不加入Getter和Setter注解，在使用BeanUtils进行属性拷贝的时候回出现问题
+ * 
+ */
 @Entity
 @Table(name = "t_user")
 @Getter

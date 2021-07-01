@@ -5,6 +5,7 @@ import com.finlu.market.dao.repo.*;
 import com.finlu.market.domain.CartRecord;
 import com.finlu.market.domain.OrderRecord;
 import com.finlu.market.domain.Product;
+import com.finlu.market.domain.User;
 import com.finlu.market.service.OrderService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,7 +139,7 @@ public class OrderServiceImpl implements OrderService {
         List<OrderRecord> orderRecords = new ArrayList<>();
         Optional<UserEntity> optionalUserEntity = this.userRepository.findById(userId);
         if (optionalUserEntity.isPresent()) {
-            List<OrderRecordEntity> allByUserEntity = this.orderRecordRepository.findAllByUserEntity(optionalUserEntity.get());
+            List<OrderRecordEntity> allByUserEntity = this.orderRecordRepository.findAll();
             for (OrderRecordEntity orderRecordEntity: allByUserEntity) {
                 List<OrderRecordItemEntity> allByOrderRecordEntity = orderRecordItemRepository.findAllByOrderRecordEntity(orderRecordEntity);
                 OrderRecord orderRecord = new OrderRecord();
@@ -150,6 +151,7 @@ public class OrderServiceImpl implements OrderService {
                     BeanUtils.copyProperties(orderRecordItemEntity.getProductEntity(), product);
                     orderRecordItem.setProduct(product);
                     orderRecordItem.setItemCount(orderRecordItemEntity.getItemCount());
+                    orderRecordItem.setStatus(orderRecordItemEntity.getStatus());
                     orderRecordItemList.add(orderRecordItem);
                 }
                 orderRecord.setId(orderRecordEntity.getId());
@@ -174,5 +176,20 @@ public class OrderServiceImpl implements OrderService {
         CartEntity one = this.cartRepository.getOne(cartId);
         this.cartRepository.delete(one);
         return true;
+    }
+
+    @Override
+    public OrderRecord.OrderRecordItem updateOrderStatus(Long orderId, Integer newStatus) {
+        Optional<OrderRecordItemEntity> order = this.orderRecordItemRepository.findById(orderId);
+        if (order.isPresent()) {
+            OrderRecordItemEntity orderRecordItem = order.get();
+            orderRecordItem.setStatus(newStatus);
+            this.orderRecordItemRepository.save(orderRecordItem);
+            OrderRecord.OrderRecordItem orderRecordItem1 = new OrderRecord.OrderRecordItem();
+            BeanUtils.copyProperties(orderRecordItem, orderRecordItem1);
+            return orderRecordItem1;
+        } else {
+            return null;
+        }
     }
 }

@@ -23,4 +23,7 @@ public class OrderRecordItemEntity extends BaseEntity {
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_record_id", referencedColumnName = "id")
     private OrderRecordEntity orderRecordEntity;
+
+    @Column
+    private Integer status;
 }

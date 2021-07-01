@@ -17,6 +17,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * 用户服务类，封装操作用户相关逻辑
+ *
+ * 
+ */
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -43,7 +48,7 @@ public class UserServiceImpl implements UserService {
         // 普通用户
         userEntity.setAdmin(false);
         // 未激活
-        userEntity.setActive(false);
+        userEntity.setActive(true);
         userEntity.setPassword(encoder.encode(userEntity.getPassword()));
         userEntity = this.userRepository.save(userEntity);
         User user = new User();

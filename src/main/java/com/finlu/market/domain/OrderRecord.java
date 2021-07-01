@@ -12,6 +12,7 @@ public class OrderRecord {
     public static final class OrderRecordItem {
         private Product product;
         private Integer itemCount;
+        private Integer status;
     }
     private List<OrderRecordItem> items;
     private Date createTime;

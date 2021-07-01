@@ -95,4 +95,10 @@ public class OrderController {
         map.put("total_price", totalPrice);
         return ResultData.success(map, "购买成功");
     }
+
+    @PostMapping("/updateOrderStatus")
+    public ResultData updateOrderStatus(@RequestParam(name = "order_id") Integer orderId, @RequestParam(name = "new_status") Integer newStatus) {
+        this.orderService.updateOrderStatus(Long.valueOf(orderId), newStatus);
+        return ResultData.success();
+    }
 }

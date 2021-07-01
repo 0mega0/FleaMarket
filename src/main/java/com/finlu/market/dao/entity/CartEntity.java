@@ -5,7 +5,10 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * 购物车记录实体类
+ * 
+ */
 @Entity(name = "cart")
 @Data
 public class CartEntity {
@@ -21,9 +24,9 @@ public class CartEntity {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity productEntity;
 
-
-    //购买数量
-
+    /**
+     * 购买数量
+     */
     @Column(nullable = false)
     private Integer count;
 }

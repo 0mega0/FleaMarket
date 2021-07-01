@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
-
+/**
+ * 在拦截器中获取Controller类的信息：https://blog.csdn.net/howroad/article/details/80220320
+ * 
+ */
 public class AdminInterceptor implements HandlerInterceptor {
     private static final String ADMIN_LOGIN_URL = "/admin/login";
 
